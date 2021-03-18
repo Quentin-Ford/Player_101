@@ -9,6 +9,7 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -57,8 +58,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
+        Log.d("bound?:", String.valueOf(isBound));
         if (isBound) {
-            switch (musicService.getPlayingStatus()){
+            if(view.getId() == play.getId()){
+                Log.d("OOF:", String.valueOf(musicService.getPlayingStatus()));
+                switch (musicService.getPlayingStatus()){
                 case 0:
                     musicService.startMusic();
                     play.setText("Pause");
@@ -72,6 +76,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     play.setText("Pause");
                     break;
             }
+            } else if(view.getId() == next.getId()){
+
+            }else if(view.getId() == prev.getId()){
+
+            }
+
+//            switch (view.getId()){
+//                case play.getId():
+//                    musicService.startMusic();
+//                    play.setText("Pause");
+//                    break;
+//                case 1:
+//                    musicService.pauseMusic();
+//                    play.setText("Resume");
+//                    break;
+//                case 2:
+//                    musicService.resumeMusic();
+//                    play.setText("Pause");
+//                    break;
+//            }
         }
     }
 

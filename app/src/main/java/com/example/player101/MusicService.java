@@ -22,7 +22,6 @@ public class MusicService extends Service {
     }
 
     public void startMusic(){
-
         musicPlayer.playMusic();
     }
 
